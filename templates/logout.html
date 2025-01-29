@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Game Over - Sesión Cerrada{% endblock %}
+{% block content %}
+<div class="d-flex flex-column justify-content-center align-items-center vh-100 game-over-screen">
+    <h1 class="game-over-text">🎮 Game Over 🎮</h1>
+    <p class="text-light">Gracias por jugar, Gamer. ¡Vuelve pronto!</p>
+    <a href="{{ url_for('login') }}" class="btn btn-glitch">🔄 Reiniciar Partida</a>
+</div>
+
+<style>
+    body {
+        background: #000;
+        color: #fff;
+        font-family: 'Press Start 2P', cursive;
+        text-align: center;
+    }
+
+    .game-over-screen {
+        background: linear-gradient(180deg, #ff0000, #000);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .game-over-text {
+        font-size: 2.5rem;
+        color: #ffcc00;
+        text-shadow: 4px 4px 0px #000;
+        animation: blink 1s infinite alternate;
+    }
+
+    @keyframes blink {
+        from { opacity: 1; }
+        to { opacity: 0.5; }
+    }
+
+    .btn-glitch {
+        background: #00ff00;
+        color: #000;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+    }
+
+    .btn-glitch:hover {
+        background: #00cc00;
+        box-shadow: 0 0 10px #00ff00;
+    }
+
+    .btn-glitch::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        transition: 0.3s;
+    }
+
+    .btn-glitch:hover::before {
+        transform: translateX(0);
+    }
+</style>
+
+{% endblock %}

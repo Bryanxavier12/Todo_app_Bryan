@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}🎮 Bienvenido, Gamer {% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background: url("https://wallpapercave.com/wp/wp2580570.jpg") no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+        text-align: center;
+    }
+
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .neon-text {
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+
+    .btn-neon {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: rgb(33, 167, 33);
+        text-transform: uppercase;
+        padding: 12px 24px;
+        margin-top: 20px;
+        border: 3px solid #0ff;
+        background: transparent;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+
+    .btn-neon:hover {
+        background: #0ff;
+        color: black;
+        text-shadow: 0 0 5px black;
+    }
+
+    .login-form input {
+        width: 280px;
+        padding: 10px;
+        margin: 10px 0;
+        border: 2px solid #0ff;
+        background: rgba(0, 0, 0, 0.6);
+        color: rgb(226, 235, 225);
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .login-form input::placeholder {
+        color: #0ff;
+    }
+
+    .alert-danger {
+        background: rgba(255, 0, 0, 0.8);
+        color: rgb(238, 237, 235);
+        text-align: center;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="login-container">
+    <h1 class="neon-text">🎮 ¡Bienvenido, Gamer! 🎮</h1>
+
+    <form class="login-form" action="/login" method="post">
+        <input type="text" name="username" placeholder="👾 Ingresa tu usuario" required>
+        <input type="password" name="password" placeholder="🔑 Ingresa tu contraseña" required>
+        <button type="submit" class="btn-neon">Iniciar Aventura 🚀</button>
+    </form>
+
+    {% if error %}
+    <div class="alert alert-danger">
+        {{ error }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

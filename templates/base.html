@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Videojuegos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form input, form button {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn-action {
+            padding: 5px 10px;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+        }
+
+        .btn-toggle {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-toggle:hover {
+            background-color: #218838;
+        }
+        .navbar-custom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #111;
+            color: white;
+        }
+    
+        .navbar-custom a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+    
+        .navbar-custom a:hover {
+            color: #0ff;
+        }
+    
+        .right-menu {
+            display: flex;
+            align-items: center;
+        }
+    
+        .right-menu a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+<body>
+<head>
+    <nav class="navbar-custom">
+        <span class="brand-title">🎮 GameApp</span>
+    
+        <div class="right-menu">
+            <a href="{{ url_for('login') }}">🏠 App</a>
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('logout') }}">🎮 Cerrar Sesión</a>
+            {% endif %}
+        </div>
+    </nav>
+</header> 
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <footer class="mt-auto" style="background: linear-gradient(to right, #000303, #2c3e50); color: white; text-align: center; padding: 15px;">
+        <p style="margin: 0; font-size: 1rem;">
+            &copy; 2024 | Base de Video juegos
+            <a href="{{ url_for('cv') }}" target="_blank" style="color: #a897e4; text-decoration: none;">
+                Gamer Bryan Navarrete
+            </a>
+        </p>
+    </footer>    
+</body>
+
+</html>

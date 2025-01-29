@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}TipoVideojuego{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Tipos de Videojuegos</h1>
+    <form action="/agregar" method="post">
+        <input type="text" name="tipo" placeholder="Nombre del tipo de videojuego" required>
+        <input type="text" name="descripcion" placeholder="Descripción breve" required>
+        <button type="submit">Agregar Tipo</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Jugado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tipo in tipos %}
+            <tr>
+                <td>{{ tipo.tipo }}</td>
+                <td>{{ tipo.descripcion }}</td>
+                <td>{{ 'Sí' if tipo.jugado else 'No' }}</td>
+                <td>
+                    <a href="/eliminar/{{ tipo.id }}" class="btn-action btn-delete">Eliminar</a>
+                    <a href="/toggle_jugado/{{ tipo.id }}" class="btn-action btn-toggle">
+                        {{ 'Marcar No Jugado' if tipo.jugado else 'Marcar Jugado' }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
